@@ -3,10 +3,10 @@
 all : vet fmt test
 
 vet :
-	go vet mquery
+	go vet github.com/tangzixiang/mquery
 
 fmt :
 	gofmt -l -e -d -w .
 
 test :
-	go test -v mquery
+	go test -v github.com/tangzixiang/mquery

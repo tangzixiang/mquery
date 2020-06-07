@@ -1,4 +1,4 @@
-module mquery
+module github.com/tangzixiang/mquery
 
 go 1.13
 
