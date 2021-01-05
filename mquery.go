@@ -352,9 +352,15 @@ func (q *Query) ParseForm(query string) *Query {
 
 // AppendToURI 将请求字段追加至 URI 上
 func (q *Query) AppendToURI(uri string) string {
-
-	if strings.Index(uri, "?") != -1 {
-		return uri + q.Encode()
+	index := strings.Index(uri, "?")
+	if index != -1 {
+		if uri[len(uri)-1] == '?' {
+			return uri + q.Encode()
+		}
+		if uri[len(uri)-1] == '&' {
+			return uri + q.Encode()
+		}
+		return uri + "&" + q.Encode()
 	}
 
 	return uri + "?" + q.Encode()
