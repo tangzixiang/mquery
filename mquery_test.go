@@ -31,6 +31,10 @@ func TestQuery_AppendToURI(t *testing.T) {
 	assert.Equal(t, path, New().AddPairs("name", "tom", "age", "15").AppendToURI("http://localhost"))
 	assert.Equal(t, path, New().AddPairs("name", "tom").AppendToURI("http://localhost?age=15"))
 	assert.Equal(t, path, New().AddPairs("name", "tom").AppendToURI("http://localhost?age=15&"))
+	assert.Equal(t, "http://localhost?age=15&", New().AppendToURI("http://localhost?age=15&"))
+	assert.Equal(t, "http://localhost?age=15", New().AppendToURI("http://localhost?age=15"))
+	assert.Equal(t, "http://localhost?", New().AppendToURI("http://localhost?"))
+	assert.Equal(t, "http://localhost", New().AppendToURI("http://localhost"))
 }
 
 func TestQuery_AppendToURIFormat(t *testing.T) {
